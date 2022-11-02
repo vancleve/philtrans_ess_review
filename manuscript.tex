@@ -20,6 +20,7 @@
 \usepackage{mleftright}
 \mleftright
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % XeLaTeX font settings
 \usepackage{fontspec}
@@ -50,7 +51,11 @@
 \usepackage{xparse}
 \usepackage{lineno}
 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
 %%% new commands and macros
+
 \newcommand{\der}{\mathop{}\!\mathrm{d}}
 \newcommand{\Oh}[1]{O\left(#1\right)}
 \newcommand{\ExpectationOperator}{\mathrm{E}}
@@ -75,9 +80,49 @@
 \newcommand{\w}{w}
 \newcommand{\ess}[1]{#1^*}
 \newcommand{\fixp}[1]{\hat{#1}}
-\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\vec}[1]{\symbf{#1}}
 \newcommand{\rec}{\rho}
 \newcommand{\mut}{\mu}
+
+\newtheorem{result}{Result}
+
+\newcommand{\xaxisandtickspip}{
+\begin{tikzpicture}[>=angle 90,scale=1.05]
+  % x-axis
+  \draw[] (0,0)--(3,0);
+  % Tick marks and annotations
+  %\path (1.5,-0.8) node [below]{$\mu_M$};
+
+  \foreach \x/\nodeLabel in {0/$10^{-3}$,
+    1.1115/$10^{-2}$,
+    2.2231/$10^{-1}$,
+    3/$0.5$}
+  {
+    \draw (\x,-0.1) -- (\x,0.1);
+    \path[anchor=center] (\x,-0.5) node[rotate=90] {\footnotesize\nodeLabel};
+  }
+\end{tikzpicture}
+}
+
+\newcommand{\yaxisandtickspip}{
+\begin{tikzpicture}[>=angle 90,scale=1.05]
+  % y-axis
+  \draw[] (0,0)--(0,3);
+  % Tick marks and annotations
+  %\path (-0.8,1.5) node [left]{$\mu_m$};
+
+  \foreach \y/\nodeLabel in {0/$10^{-3}$,
+    1.1115/$10^{-2}$,
+    2.2231/$10^{-1}$,
+    3/$0.5$}
+  {
+    \draw (-0.1,\y) -- (0.1,\y);
+    \path[anchor=center] (-0.5,\y) node {\footnotesize\nodeLabel};
+  }
+\end{tikzpicture}
+}
+
+%%%
 
 \begin{document}
 
@@ -180,7 +225,7 @@ One way forward to understanding the complex phenotypic evolution including soci
 
 \section{What is an ESS?}
 
-The definition of an ESS is relatively simple and only involves a measure of fitness, a set of phenotypes, and a stability condition. Let $\w(x,y)$ be the fitness that an individual with phenotype or strategy $x$ obtains when interacting with an individual with phenotype or strategy $y$. The phenotypes can be drawn from a set of discrete or continous set of values $X$ that represent a single trait like body size or propensity to cooperate. Fitness $\w$ for the moment is simply the survival rate (i.e., viability selection) but as we'll see we can define much more general fitness measures. The stability condition \cite{Maynard-Smith:Price:1973,Maynard-Smith:1974} says that a phenotype $\ess{x}$ is an ESS when no alternative strategy $y$ can improve upon the fitness that $\ess{x}$ receives when interacting with itself:
+The definition of an ESS is relatively simple and only involves a measure of fitness, a set of phenotypes, and a stability condition. Let $\w(x,y)$ be the fitness that an individual with phenotype or strategy $x$ obtains when interacting with an individual with phenotype or strategy $y$. The phenotypes can be drawn from a set of discrete or continous set of values $X$ that represent a single trait like body size or propensity to cooperate. Fitness $\w$ for the moment is simply the survival rate (i.e., viability selection) but as we'll see we can define much more general fitness measures. The stability condition \cite{Maynard-Smith:Price:1973,Maynard-Smith:1974} says that a phenotype $\ess{x}$ is an ESS, or is evolutionarily stable (ES), when no alternative strategy $y$ can improve upon the fitness that $\ess{x}$ receives when interacting with itself:
 \begin{subequations}
   \label{eq:ess:def}
 \begin{equation}
@@ -197,7 +242,7 @@ The two conditions in \eqref{eq:ess:def} are equivalent to requiring that phenot
 
 \section{How does ESS related to population-genetic dynamics?}
 
-Notably, the conditions in \eqref{eq:ess:def} do not reference the genetic basis of the trait $X$ nor do they describe how the frequency or mean value of the trait changes over time. Population genetics models, on the other hand, are built to measure the dynamical process of evolution via the combined effects of natural selection and segregation, recombination, mutation, genetic drift, and other evolutionary forces \cite{Crow:Kimura:1970,Ewens:2004}. A natural question then is how the long-run behavior of a population genetic model (e.g., its equilibrium genotypes and induced phenotypes) compares to the equilibrium phenotypes obtained from an analogous ESS model. This question was tackled by mathematical population biologists beginning in the late 1970s and through 1980s and 1990s \cite[e..g,][]{Taylor:Jonker:1978,Hofbauer:Schuster:1979,Zeeman:1980,Eshel:1982,Hofbauer:Schuster:1982,Lessard:1984,Cressman:1988,Cressman:Hines:1984,Cressman:Hofbauer:1996,Hammerstein:1996,Weissing:1996,Eshel:1996,Eshel:Feldman:1984}. Early work in the simplest haploid asexual population genetic model with discrete strategies showed that the ESSs of obtained from condition \eqref{eq:ess:def} must be stable equilibria of the haploid asexual model \cite{Taylor:Jonker:1978,Hofbauer:Schuster:1979,Zeeman:1980}. Specifically, suppose there are two possible phenotypes $1$ and $2$ with the payoff matrix $U = (u_{xy})$ where $u_{xy} = \w(x,y)$ is the payoff or increase to fitness of an individual of type $x$ interacting with an individual of type $y$. Then, the ESSs obtained by applying condition \eqref{eq:ess:def} to the payoff matrix $A$ are stable equilibria of a haploid asexual population genetic model with two genotypes, one for each phenotype \cite{Taylor:Jonker:1978,Hofbauer:Schuster:1979,Zeeman:1980,Hofbauer:Sigmund:1998}. This result isn't particularly surprising since natural selection is the only evolutionary force acting in the haploid asexual model. Importantly, a similar  correspondence between ESSs and population genetic models also applies to a diploid sexual population reproducing in discrete time. Suppose there are two possible phenotypes controlled by a single genetic locus with $n$ possible alleles $A_{1},\ldots,A_{n}$ where dominance is possible between alleles and Mendelian segregation breaks up diploid genotypes every generation \cite{Eshel:1982,Lessard:1984}. Let diploid genotype $A_{i} A_{j}$ choose phenotype $1$ with probability $x_{ij}$ and phenotype $2$ with probability $1-x_{ij}$. If the $\vec{p} = (p_{1}, \ldots, p_{n})$ is the vector of allele frequencies for alleles $A_{1},\ldots,A_{n}$, then the frequency of phenotype $1$ in the population after reproduction is
+Notably, the conditions in \eqref{eq:ess:def} do not reference the genetic basis of the trait $X$ nor do they describe how the frequency or mean value of the trait changes over time. Population genetics models, on the other hand, are built to measure the dynamical process of evolution via the combined effects of natural selection and segregation, recombination, mutation, genetic drift, and other evolutionary forces \cite{Crow:Kimura:1970,Ewens:2004}. A natural question then is how the long-run behavior of a population genetic model (e.g., its equilibrium genotypes and induced phenotypes) compares to the equilibrium phenotypes obtained from an analogous ESS model. This question was tackled by mathematical population biologists beginning in the late 1970s and through 1980s and 1990s \cite[e..g,][]{Taylor:Jonker:1978,Hofbauer:Schuster:1979,Zeeman:1980,Eshel:1982,Hofbauer:Schuster:1982,Lessard:1984,Cressman:1988,Cressman:Hines:1984,Cressman:Hofbauer:1996,Hammerstein:1996,Weissing:1996,Eshel:1996,Eshel:Feldman:1984}. Early work in the simplest haploid asexual population genetic model with discrete strategies showed that the ESSs obtained from condition \eqref{eq:ess:def} must be stable equilibria of the haploid asexual model \cite{Taylor:Jonker:1978,Hofbauer:Schuster:1979,Zeeman:1980}. Specifically, suppose there are two possible phenotypes $1$ and $2$ with the payoff matrix $U = (u_{xy})$ where $u_{xy} = \w(x,y)$ is the payoff or increase to fitness of an individual of type $x$ interacting with an individual of type $y$. Then, the ESSs obtained by applying condition \eqref{eq:ess:def} to the payoff matrix $A$ are stable equilibria of a haploid asexual population genetic model with two genotypes, one for each phenotype \cite{Taylor:Jonker:1978,Hofbauer:Schuster:1979,Zeeman:1980,Hofbauer:Sigmund:1998}. This result isn't particularly surprising since natural selection is the only evolutionary force acting in the haploid asexual model. Importantly, a similar  correspondence between ESSs and population genetic models also applies to a diploid sexual population reproducing in discrete time. Suppose there are two possible phenotypes controlled by a single genetic locus with $n$ possible alleles $A_{1},\ldots,A_{n}$ where dominance is possible between alleles and Mendelian segregation breaks up diploid genotypes every generation \cite{Eshel:1982,Lessard:1984}. Let diploid genotype $A_{i} A_{j}$ choose phenotype $1$ with probability $x_{ij}$ and phenotype $2$ with probability $1-x_{ij}$. If the $\vec{p} = (p_{1}, \ldots, p_{n})$ is the vector of allele frequencies for alleles $A_{1},\ldots,A_{n}$, then the frequency of phenotype $1$ in the population after reproduction is
 \begin{equation*}
   x = x(\vec{p}) = \sum_{i,j} p_{i} p_{j} x_{ij} \: .
 \end{equation*}
@@ -217,18 +262,49 @@ and the mean fitness of an individual with genotype $A_{i}B_{j}/A_{k}B_{l}$ inte
 \begin{equation*}
   \mean{w} = \sum_{ijkl} w(x_{ijkl}, x) p_{ij} p_{kl} = w(x, x) \: .
 \end{equation*}
-Now, assume that a new mutant allele $A_{\mut}$ (increasing the total number of alleles at locus $A$ to $n+1$) arrives at low frequency in a population at an internally stable equilibrium $\fixp{p}$ with mean phenotype $\fixp{x} = x(\fixp{p})$. An individual with this new allele chooses phenotype 1 with probability $x_{\mut jkl}$ if its genotype is $A_{\mut}B_{j}/A_{k}B_{l}$ and phenotype 2 with probability $1 - x_{\mut jkl}$. A linear stability analysis shows that this allele will either initially increase or decrease in frequency at a geometric rate $\lambda$ that is the largest eigenvalue of a Jacobian matrix \cite{Edelstein-Keshet:2005}. The eigenvalue $\lambda$ has an associated normalized eigenvector $\vec{v}$ that measures the frequency of mutant chromosomes (i.e., chromosomes $A_{\mut} B_{j}$) once the invasion process has stabilized (i.e., has reached stationarity \cite{Caswell:2006}). Eshel and Feldman \cite{Eshel:Feldman:1984} showed that this geometric growth rate is
+Now, assume that a new mutant allele $A_{\mut}$ (increasing the total number of alleles at locus $A$ to $n+1$) arrives at low frequency in a population at an internally stable equilibrium $\fixp{\vec{p}}$ with mean phenotype $\fixp{x} = x(\fixp{\vec{p}})$. An individual with this new allele chooses phenotype 1 with probability $x_{\mut jkl}$ if its genotype is $A_{\mut}B_{j}/A_{k}B_{l}$ and phenotype 2 with probability $1 - x_{\mut jkl}$. A linear stability analysis shows that this allele will either initially increase or decrease in frequency at a geometric rate $\lambda$ that is the largest eigenvalue of a Jacobian matrix \cite{Edelstein-Keshet:2005}. The eigenvalue $\lambda$ has an associated normalized eigenvector $\vec{v}$ that measures the frequency of mutant chromosomes (i.e., chromosomes $A_{\mut} B_{j}$) once the invasion process has stabilized (i.e., has reached stationarity \cite{Caswell:2006}). Eshel and Feldman \cite{Eshel:Feldman:1984,Eshel:Feldman:1998} showed that this geometric growth rate is
 \begin{equation}
   \label{eq:lambda:twolocus}
   \lambda = \frac{w(x_{\mut}, \fixp{x})}{w(\fixp{x}, \fixp{x})}
 \end{equation}
 where $\lambda>0$ and
-\begin{equation*}
+\begin{equation}
+  \label{eq:mut:pheno:twolocus}
   x_{\mut} = \sum_{jkl} v_{j} \fixp{p}_{kl} x_{\mut jkl}
+\end{equation}
+is the frequency of phenotype 1 among mutant individuals once the invasion process has stabilized. Note that since the mutant allele is rare, mutant individuals can have only one mutant chromosome; the other chromosome has no mutant alleles at locus $A$ and remains at the internal equilibrium frequency $\fixp{p}_{kl}$. A necessary condition for the equilibrium with phenotype $\fixp{x}$ to be externally stable is that $\lambda \le 1$ or from equation \eqref{eq:lambda:twolocus}
+\begin{equation*}
+  w(x_{\mut}, \fixp{x}) \le w(\fixp{x}, \fixp{x})
 \end{equation*}
-is the frequency of phenotype 1 among mutant individuals once the invasion process has stabilized. Note that since the mutant allele is rare, mutant individuals can have only one mutant chromosome; the other chromosome has no mutant alleles at locus $A$ and remains at the internal equilibrium frequency $\fixp{p}_{kl}$.
+for all possible mutant $A_{\mut}$ that generate mutant phenotype $x_{\mut}$. This condition is quite close to the ESS condition in \eqref{eq:ess:def} and can be used to prove that the following result for randomly mating diploid populations with two-locus genetic systems \cite{Eshel:Feldman:1984,Eshel:1996,Eshel:Feldman:1998}:
+\begin{result}
+  \label{res:twolocus}
+  Any phenotype $\fixp{x}$ generated by an externally stable equilibrium is an ESS. Moreover, for ESS phenotype $\ess{x}$ generated by an internally stable equilibrium $\fixp{\vec{p}}$, $\fixp{\vec{p}}$ is externally stable.
+\end{result}
+Result \eqref{eq:lambda:twolocus} likely extends to more than two loci given work by Liberman \cite{Liberman:1988}.
+
+One important conclusion from Result \ref{res:twolocus} is that the ESS condition of Maynard Smith and Price \cite{Maynard-Smith:Price:1973,Maynard-Smith:1974} is an appropriate stability condition for the long-term evolution process. More generally, the fact that the ESS condition alone can describe the end points of long-term evolution (given the the general genetic assumptions above) is a mathematical demonstration of the importance of natural selection on phenotypes in determining long-term evolutionary trajectories. Thus, Result \eqref{eq:lambda:twolocus} provides a robust mathematical justification for the use of the ESS method or fitness optimization in building evolutionary models.
+
+However, Result \eqref{eq:lambda:twolocus} also shows the importance of genetics in the long-term evolution process. ESS phenotypes of the long-term process are produced by externally stable genotypic equilibria, and the conditions for the stability of those equilibria depend on specific assumptions about the genetic system of the evolving population (e.g., random mating and autosomal loci). If those assumptions change, then the ES phenotypes may depend on parameters of the genetic system. For example, the ES sex ratio \cite{Fisher:1930} in a randomly mating population is 1:1 when the ratio is determined by an diploid autosomal gene \cite{Hamilton:1967,Eshel:Feldman:1982}, but it can take other values when the gene is sex-linked or the genetic system is more complex like in insect that are haplodiploid \cite{Hamilton:1967,Eshel:Feldman:1982a}. A more recent example involves the evolution of bet-hedging where organisms alternative between different phenotypes with a specific probability or rate when the environmental cycles between different conditions \cite{Seger:Brockmann:1987,Slatkin:1974}. These phenotypic shifts can be due to genetic mutations \cite{Leigh:1970,Ishii:Matsuda:1989} or switching between different epigenetic states  \cite{Kussell:Leibler:2005,Salathe:VanCleve:2009} where control of the mutation or switching rate is determined by a ``modifier'' locus separate for the genetic or epigenetic locus controlling the phenotype. Due to the changing environment, this scenario does not fit neatly into the conditions required for Result \eqref{eq:lambda:twolocus}. In fact, an analysis of the external stability of the switching/mutation rate shows that the switching rate that is ES depends on the recombination rate between phenotypic locus and the modifier locus \cite{Liberman:VanCleve:2011}. For example, Figure \ref{fig:pip:switching}, shows pairwise invasibility plots for switching rate with different recombination rates and given weakly asymmetric selection in two different environments that alternate every $50$ generations. White regions are where mutant alleles with a switching rate on the veritcal axis can invade a population with a ``resident'' rate given by the horizontal axis; black regions are when such a mutant cannot invade. The plots show that a rate of $~1/50$ is ES when the recombination rate is zero (similar to older results in \cite{Leigh:1970,Lachmann:Jablonka:1996}). The ES switching rate decreases as recombination increases until there is an abrupt shift to an ES rate of zero switching. In addition to the ES sex ratio and switching rate, there are other examples where the genetic parameters of the modifier locus affect the ES value at that locus including dispersal and recombination in changing environments \cite{Carja:Liberman:2014}.
 
 
+
+
+\begin{figure}[ht!]
+  \begin{tabular}{r@{}r@{\hspace{-1.0ex}}c@{}c@{}c@{}c}
+    & & $R=0.0$ & $R=0.05$ & $R=0.1$ & $R=0.15$ \\
+    \cmidrule(lr){3-3}  \cmidrule(lr){4-4}  \cmidrule(lr){5-5} \cmidrule(lr){6-6}
+    \raisebox{-0.2cm}{\rotatebox{90}{Mutant switching rate}} & \raisebox{-0.2cm}{\yaxisandtickspip} &
+    \includegraphics[width=1.25in]{pip_n50_s1_0-01_s2_0-015_r_0-0.pdf} &
+    \includegraphics[width=1.25in]{pip_n50_s1_0-01_s2_0-015_r_0-05.pdf} &
+    \includegraphics[width=1.25in]{pip_n50_s1_0-01_s2_0-015_r_0-1.pdf} &
+    \includegraphics[width=1.25in]{pip_n50_s1_0-01_s2_0-015_r_0-15.pdf} \\
+    & & \xaxisandtickspip & \xaxisandtickspip & \xaxisandtickspip & \xaxisandtickspip \\
+    & & \multicolumn{4}{c}{Resident switching rate}
+  \end{tabular}
+  \caption{}
+  \label{fig:pip:switching}
+\end{figure}
 
 %%%
 %%% old scraps and ramblings
@@ -250,6 +326,8 @@ Following the development of the ESS approach by Maynard Smith and Price \cite{M
 \section{Acknowledgements}
 
 \section{Funding}
+
+This work was supported by National Science Foundation awards \#1846260 and \#1953223 to J.V.C.
 
 \clearpage
 %\setlength{\bibitemsep}{1pt}
