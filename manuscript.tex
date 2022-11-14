@@ -103,7 +103,7 @@
 \newcommand{\rec}{\rho}
 \newcommand{\mut}{\mu}
 \newcommand{\eig}{\lambda}
-\newcommand{\numc}{\mathcal{C}}
+\newcommand{\numc}{\mathcal{S}}
 \newcommand{\cost}{}
 \newcommand{\benefit}{}
 
@@ -178,7 +178,11 @@ e-mail: \href{mailto:jvancleve@uky.edu}{jvancleve@uky.edu}
 \onehalfspacing
 \begin{abstract}
 
-The application of game theory to animal behavior by Maynard Smith and Price invigorated evolutionary biology by suggesting that the complex dynamics among natural selection, genes, and behavior could be analyzed using an evolutionary refinement of the Nash equilibrium, namely the evolutionarily stable strategy (ESS)\@. As implied by ``equilibrium'' and ``stable'', an ESS is a predicted long-term outcome that an evolutionary process may reach via natural selection and mutation. ESS analysis has been particularly important in highlighting the importance of social dilemmas in biology where the evolution of cooperative behavior can be undermined by the individual fitness costs of that behavior. However, even simple games like the stag-hunt or coordination game can have multiple ESSs, which begs the question, which ESS is more likely to evolve? Unfortunately, ESS analysis does not reveal which ESS is more likely to evolve nor does it even show how genetic or demographic factors affect the speed of approach to an ESS. Progress on determining which ESSs are more ``realistic'' has been made using tools from stochastic processes and population and quantitative genetics including stochastic stability, absorption times, and G-matrix theory. In this paper, we will review the use of these tools and provide novel insight into how they can predict social evolution as a function of genetic and demographic processes.
+  The application of game theory to animal behavior by Maynard Smith and Price invigorated evolutionary biology by suggesting that the complex dynamics among natural selection, genes, and behavior could be analyzed using an evolutionary refinement of the Nash equilibrium, namely the evolutionarily stable strategy (ESS). As implied by ``equilibrium'' and ``stable'', an ESS is a predicted long-term outcome that an evolutionary process may reach via natural selection and mutation.
+
+  In addition to its intuitiveness, ESS analysis makes modeling phenotypic evolution relatively simple as it often does not require the modeler to state their assumptions about the genetics and demography of a population in contrast to explicit population or quantitative genetic models. Though this simplicity is useful, it can obscure the degree to which ESS analysis is applicable in populations with more realistic genetic and demography: for example how does ESS analysis handle  interactions with relatives (kin selection), selection across levels (group selection), and variable environments when phenotypes are affected by multiple genes?
+
+  In this paper, I will review the history of the ESS concept and show how early uncertainty about the method lead to deeper theoretical work linking ESS analysis to very general population models through the theory of ``long-term evolution''. A crucial tool in long-term evolution is the concept of ``invasion fitness'', which can be calculated for populations with complex genetics and demography and can be used to predict ESSs. These ESSs often depend crucially on demographic and genetic parameters. Given the increasing abundance of genetic and long-term demographic data in natural populations, this means that ESS analysis will likely be an important tool in understanding these data with evolutionary models.
 
 \end{abstract}
 
@@ -201,7 +205,7 @@ Subsequent work by population geneticists revealed however that mean fitness can
 
 \section{What is an ESS?}
 
-The definition of an ESS is relatively simple and only involves a measure of fitness, a set of phenotypes, and a stability condition. Let $\w(x,y)$ be the fitness that an individual with phenotype or strategy $x$ obtains when interacting with an individual with phenotype or strategy $y$. The phenotypes can be drawn from a set of discrete or continous set of values $X$ that represent a single trait like body size or propensity to cooperate. Fitness $\w$ for the moment is simply the survival rate (i.e., viability selection) but as we'll see we can define much more general fitness measures. The stability condition \cite{Maynard-Smith:Price:1973,Maynard-Smith:1974} says that a phenotype $\ess{x}$ is an ESS, or is evolutionarily stable (ES), when no alternative strategy $y$ can improve upon the fitness that $\ess{x}$ receives when interacting with itself:
+The definition of an ESS is relatively simple and only involves a measure of fitness, a set of phenotypes, and a stability condition. Let $\w(x,y)$ be the fitness that an individual with phenotype or strategy $x$ obtains when interacting with an individual with phenotype or strategy $y$. The phenotypes can be drawn from a set of discrete or continuous set of values $X$ that represent a single trait like body size or propensity to cooperate. Fitness $\w$ for the moment is simply the survival rate (i.e., viability selection) but as we'll see we can define much more general fitness measures. The stability condition \cite{Maynard-Smith:Price:1973,Maynard-Smith:1974} says that a phenotype $\ess{x}$ is an ESS, or is evolutionarily stable (ES), when no alternative strategy $y$ can improve upon the fitness that $\ess{x}$ receives when interacting with itself:
 \begin{subequations}
   \label{eq:ess:def}
 \begin{equation}
@@ -283,7 +287,7 @@ Since we can in principle calculate invasion fitness for populations with comple
 
 \section{Inclusive fitness, group-structured populations, and ESS}
 
-In a populations where individuals live in groups and dispersal is limited, individuals are more genetically related to their groupmates than to individuals in different groups \cite{Wright:1943,Wright:1951,Hamilton:1970}, which means there is a possibility for kin selection to drive the evolution of prosocial phenotypes \cite{Hamilton:1964,Rousset:2004,Lehmann:Rousset:2014}. Moreover, group structure allows for competition among groups for resources and the possibility of selection among groups favoring more prosocial groups given sufficient group integrity \cite{Hamilton:1975,Wilson:Pollock:1992,Traulsen:Nowak:2006,Gardner:West:2006,Lehmann:Rousset:2010}. In fact, the Price equation \cite{Price:1970,Price:1972:cov} can be used to show that kin and group selection perspectives both lead to the same predictions when applied to the same population model \cite{Queller:1992,Lehmann:Keller:2007,Bijma:Wade:2008,Gardner:Grafen:2009,Marshall:2011,Akcay:VanCleve:2012}. Thus, we should expect that predicting an ESS for prosocial behavior in a group structured population by calculating invasion fitness will capture the effects of both kin and group selection. To see this, we will outline the invasion fitness analysis of this scenario performed by Lehmann and colleagues \cite{Lehmann:Mullon:2016,Lehmann:Rousset:2020}. This analysis also provides a formal justification for the intuition of Maynard Smith \cite{MaynardSmith:1978} and others that a correct fitness measure for ESS analysis is Hamilton's inclusive fitness \cite{Hamilton:1964} by showing that inclusive fitness is monotonically related to invasion fitness.
+In a populations where individuals live in groups and dispersal is limited, individuals are more genetically related to their groupmates than to individuals in different groups \cite{Wright:1943,Wright:1951,Hamilton:1970}, which means there is a possibility for kin selection to drive the evolution of prosocial phenotypes \cite{Hamilton:1964,Rousset:2004,Lehmann:Rousset:2014}. Moreover, group structure allows for competition among groups for resources and the possibility of selection among groups favoring more prosocial groups given sufficient group integrity \cite{Hamilton:1975,Wilson:Pollock:1992,Traulsen:Nowak:2006,Gardner:West:2006,Lehmann:Rousset:2010}. In fact, the Price equation \cite{Price:1970,Price:1972:cov} can be used to show that kin and group selection perspectives on fitness both lead to the same predictions when applied to the same population model \cite{Queller:1992,Lehmann:Keller:2007,Bijma:Wade:2008,Gardner:West:2007,Marshall:2011,Akcay:VanCleve:2012}. Thus, we should expect that predicting an ESS for prosocial behavior in a group structured population by calculating invasion fitness will capture the effects of both kin and group selection. To see this, we will outline the invasion fitness analysis of this scenario performed by Lehmann and colleagues \cite{Lehmann:Mullon:2016,Lehmann:Rousset:2020}. This analysis also provides a formal justification for the intuition of Maynard Smith \cite{MaynardSmith:1978} and others that a correct fitness measure for ESS analysis is Hamilton's inclusive fitness \cite{Hamilton:1964} by showing that inclusive fitness is monotonically related to invasion fitness.
 
 Suppose a population is composed of an infinite number of groups each containing $n$ individuals; groups can be thought as demes or patches each  equally connected to one another at some rate of migration or dispersal (i.e., Wright's island model \cite{Wright:1931}). Each individual can belong to one of $\numc$ demographic classes, such as age, sex, or caste, such as workers and queens in social insects. Phenotypes are produced by alleles at a single haploid genetic locus. Alleles can be pleiotropic and code for specific phenotypes for each class: phenotype $\vec{x}=(x_{1},\ldots,x_{\numc})$ where $x_{s}$ is the phenotype for class $s$. We assume that once at a genetic and demographic equilibrium with phenotype $\vec{x}$, the population stabilizes at $n_{s}$ individuals in class $s$ in each group where the group size is just the sum of all the individuals in each class or $n = \sum_{s} n_{s}$.
 
@@ -297,7 +301,7 @@ where the associated eigenvector $\vec{u}(\vec{y}, \vec{x})$ measures the relati
   \label{eq:a:w}
   \sum_{k'} k_{s'} k_{s'}' a_{\vec{k}'\vec{k}}(\vec{y}, \vec{x}) = \sum_{s} k_{s} \omega_{s's\vec{k}}(\vec{y}, \vec{x}) \: .
 \end{equation}
-\citeauthor{Lehmann:Mullon:2016} \cite{Lehmann:Mullon:2016,Lehmann:Rousset:2020} use equation \eqref{eq:a:w} to show that the invasion (or lineage) fitness is given by
+\citeauthor{Lehmann:Mullon:2016} \cite{Lehmann:Mullon:2016,Lehmann:Rousset:2020} use equation \eqref{eq:a:w} to show that the invasion (or lineage) fitness of mutant phenotype $\vec{x}$ in a resident population with phenotype $\vec{y}$ is given by
 \begin{equation}
   \label{eq:eig:class}
   \eig(\vec{y}, \vec{x}) = \sum_{\vec{k},s',s} \omega_{s's\vec{k}}(\vec{y}, \vec{x}) q_{\vec{k},s}(\vec{y}, \vec{x})
@@ -308,7 +312,29 @@ where $q_{\vec{k},s}(\vec{y}, \vec{x})$ is the probability (when the invasion pr
 \end{equation*}
 The invasion fitness expression in equation \eqref{eq:eig:class} for a group- and class-structured population is conceptually identical to the one for a single population with two-loci in equation \eqref{eq:eig:twolocus}: both expressions show that the mutant successfully invades when mutant alleles more than replace themselves when averaged across all the genetic contexts (i.e., possible alleles at other loci) and demographic contexts (i.e., possible group compositions by mutant allele frequency in each class) in which the mutant lineage occurs during their invasion process.
 
-The invasion fitness in equation \eqref{eq:eig:class} can also be expressed rewritten in terms of inclusive fitness to isolate the effect of mutant allele expression on the fitness of the focal individual (direct effect) and on genetically related individuals (indirect effect). There are some important technical subtleties as to how this can be accomplished that we will leave out to keep the presentation simple (see ``Supplement B'' in \cite{Lehmann:Rousset:2020} for details). The essence of the method is the same as the one found in many analyses that derive inclusive fitness using the Price equation \cite[e.g.,]{Queller:1992,Frank:1998,Lehmann:Keller:2006,Akcay:VanCleve:2012}: the fitness of a focal individual, here $\omega_{s's\vec{k}}(\vec{y}, \vec{x})$, decomposed into terms that reflects the marginal fitness effects of ``changing'' an allele from expressing the resident phenotype $x_{s}$ to the mutant phenotype $y_{s}$ in a class $s$ individual. The cost term
+The invasion fitness in equation \eqref{eq:eig:class} can also be expressed in terms of inclusive fitness in order to isolate the effect on fitness of mutant allele expression in the focal individual (direct effect) and in genetically related individuals (indirect effect). There are some important technical subtleties as to how this can be accomplished that we will leave out to keep the presentation simple (see ``Supplement B'' in \cite{Lehmann:Rousset:2020} for details). The essence of the method is the same as the one found in many analyses that derive inclusive fitness using the Price equation \cite[e.g.,]{Queller:1992,Frank:1998,Lehmann:Keller:2006,Akcay:VanCleve:2012}: the fitness of a focal individual, here $\omega_{s's\vec{k}}(\vec{y}, \vec{x})$, is decomposed into cost and benefit terms reflecting the marginal effects on fitness\footnote{Marginal effects in this context means additive effects of the phenotype on fitness and often measured with partial regression coefficients.} of expressing the mutant phenotype $y_{s}$ relative to the resident phenotype $x_{s}$. The cost term $c_{s's}(\vec{y}, \vec{x})$ measures the marginal decrease in class $s'$ offspring produced by a class $s$ individual due to expression of the mutant allele in that individual. The benefit term $b_{s'\sigma \leftarrow s}(\vec{y}, \vec{x})$ measures the marginal increase in the number of class $s'$ offspring produced individuals of class $\sigma$ due to the mutant allele expression by a groupmate of class $s$. The invasion fitness can then be expressed as (using an ``actor-modulated'' approach) \cite{Lehmann:Rousset:2020}
+\begin{equation}
+  \label{eq:eig:IF}
+  \eig(\vec{y}, \vec{x}) = 1 + \sum_{s',s} q_{s}(\vec{y}, \vec{x}) v_{s'}(\vec{y}, \vec{x})
+  \left( - c_{s's}(\vec{y}, \vec{x}) + \sum_{\sigma} b_{s'\sigma \leftarrow s}(\vec{y}, \vec{x}) r_{\sigma|s}(\vec{y}, \vec{x}) \right)
+\end{equation}
+where $r_{\sigma|s}(\vec{y}, \vec{x})$ is genetic relatedness and is the probability that a random groupmate of class $\sigma$ has the mutant allele given an individual of class $s$ has the mutant allele, $v_{s'}(\vec{y}, \vec{x})$ is the normalized reproductive value of class $s'$, and $q_{s}(\vec{y}, \vec{x})$ is the probability that a mutant individual in the invasion process is in class $s$ (see ref. \cite{Lehmann:Rousset:2020} for technical definitions of these quantities). Equation \eqref{eq:eig:IF} shows how invasion fitness can be partitioned into the direct effects of mutant allele expression, which are cost terms, and the indirect effects, which are the benefit times relatedness terms. Thus, kin selection and the evolution of altruistic traits are easily captured with an ESS analysis of invasion fitness.
+
+Given that previous work using the Price equation has shown that kin selection and group selection partitions of fitness are simply alternative ways of expressing genotype frequency change in a population \cite{Queller:1992,Bijma:Wade:2008,Gardner:West:2007,Marshall:2011,Akcay:VanCleve:2012}, it should be possible to rewrite invasion fitness so as to group terms that constitute between-group selection, $\omega_{G,s's}(\vec{y}, \vec{x})$, and those that constitute within-group selection, $\omega_{\Delta G,s's}(\vec{y}, \vec{x})$. In fact, we can do this by applying a ``neighbor-modulated'' approach from refs. \cite{Queller:1992,Akcay:VanCleve:2012} to the results from ref. \cite{Lehmann:Rousset:2020} and obtaining
+\begin{equation}
+  \label{eq:eig:GS}
+  \eig(\vec{y}, \vec{x}) = 1 + \sum_{s',s} q_{s}(\vec{y}, \vec{x}) v_{s'}(\vec{y}, \vec{x})
+  \left( \omega_{G,s's}(\vec{y}, \vec{x}) + \omega_{\Delta G,s's}(\vec{y}, \vec{x}) \right)
+\end{equation}
+where, dropping the dependence on $\vec{x}$ and $\vec{y}$ for ease of presentation,
+\begin{equation}
+  \label{eq:wg:wdeltag}
+  \begin{split}
+    \omega_{G,s's} & = \left(b_{s's \leftarrow s} - c_{s's} \right) \left(\frac{1}{n_{s}} + \frac{n_{s}-1}{n_{s}} r_{\sigma|s} \right) + \sum_{\sigma \ne s} b_{s's \leftarrow \sigma} r_{\sigma|s} \\
+    \omega_{\Delta G,s's} & = - \left(b_{s's \leftarrow s} + c_{s's}\right) \frac{n_{s}-1}{n_{s}} \left( 1 - r_{\sigma|s} \right) \: .
+  \end{split}
+\end{equation}
+We can see immediately that if mutant allele expression is costly to the individual itself, $c_{s's}>0$, helps others, $b_{s's \leftarrow \sigma}>0$ for all classes $\sigma$, and the benefits outweigh the costs within a class, $b_{s's \leftarrow s} - c_{s's}>0$, then the mutant allele expression is positively selected by between-group selection and negatively selected by within-group selection. Since both the inclusive fitness and group selection partitions of invasion fitness (equations \eqref{eq:eig:IF} and \eqref{eq:eig:GS}, respectively) are expressed using the same benefit, cost, and relatedness functions, a singular ESS analysis using invasion can answer questions derived both both perspectives.
 
 \section{Variable environments, recombination, and ESS}
 
@@ -329,6 +355,8 @@ The invasion fitness in equation \eqref{eq:eig:class} can also be expressed rewr
   \label{fig:pip:switching}
 \end{figure}
 
+
+
 A more recent example involves the evolution of bet-hedging where organisms alternative between different phenotypes with a specific probability or rate when the environmental cycles between different conditions \cite{Seger:Brockmann:1987,Slatkin:1974}. These phenotypic shifts can be due to genetic mutations \cite{Leigh:1970,Ishii:Matsuda:1989} or switching between different epigenetic states  \cite{Kussell:Leibler:2005,Salathe:VanCleve:2009} where control of the mutation or switching rate is determined by a ``modifier'' locus separate for the genetic or epigenetic locus controlling the phenotype. Due to the the fitness effects of a changing environment, this scenario does not fit neatly into the conditions required for Result \ref{res:twolocus}. In fact, an analysis of the external stability of the switching/mutation rate shows that the switching rate that is ES depends on the recombination rate between phenotypic locus and the modifier locus \cite{Liberman:VanCleve:2011}. For example, Figure \ref{fig:pip:switching}, shows pairwise invasibility plots for switching rate with different recombination rates and given weakly asymmetric selection in two different environments that alternate every $50$ generations. White regions are where mutant alleles with a switching rate on the veritcal axis can invade a population with a resident rate for the rest of the population given by the horizontal axis; black regions are when such a mutant cannot invade. The plots show that a rate of $~1/50$ is ES when the recombination rate is zero (similar to older results in \cite{Leigh:1970,Lachmann:Jablonka:1996}). The ES switching rate decreases as recombination increases until there is an abrupt shift to an ES rate of zero switching. In addition to the ES sex ratio and switching rate, there are other examples where the genetic parameters of the modifier locus affect the ES value at that locus including dispersal and recombination in changing environments \cite{Carja:Liberman:2014}.
 
 
@@ -346,22 +374,17 @@ This work was supported by National Science Foundation awards \#1846260 and \#19
 
 %% Outline/Brainstorm
 
-\begin{enumerate}
-  \item Intro
-        \begin{enumerate}
-          \item Little intro about Maynard Smith and Price
-          \item Game theory as general optimization and search for fixed points
-          \item Connect back to Hamilton 1964 and goal of optimization with relatedness
-          \item Evolutionary process is dynamic but still has ``fixed points''
-          \item Evolutionary change can be decomposed and each piece affects location and stability of fixed points
-          \item Evol Game theory captures selection but not demography and genetic forces, which can have strong effects.
-        \end{enumerate}
-  \item Ok, so thinking more about this, the two main pieces in certain ways are the fitness or success measure and whether maximizing it leads a correct predictions. pop mean fitness as measure fails due to genetics and due to frequency dependence. hamilton suggested inclusive fitness. later authors showed that this is equivalent to an invasion fitness perspective. maximization of this leads to ESS. Stochasticity though due to mutation/drift/etc leads to stationary distribution...
-  \item Extra things
-        \begin{enumerate}
-          \item emphasize the incompleteness of the review. Maybe cite a few ``relevant'' Perc papers?
-        \end{enumerate}
-\end{enumerate}
+\section{extra stuff}
+- Intro
+  - Little intro about Maynard Smith and Price
+  - Game theory as general optimization and search for fixed points
+  - Connect back to Hamilton 1964 and goal of optimization with relatedness
+  - Evolutionary process is dynamic but still has ``fixed points''
+  - Evolutionary change can be decomposed and each piece affects location and stability of fixed points
+  - Evol Game theory captures selection but not demography and genetic forces, which can have strong effects.
+- Ok, so thinking more about this, the two main pieces in certain ways are the fitness or success measure and whether maximizing it leads a correct predictions. pop mean fitness as measure fails due to genetics and due to frequency dependence. hamilton suggested inclusive fitness. later authors showed that this is equivalent to an invasion fitness perspective. maximization of this leads to ESS. Stochasticity though due to mutation/drift/etc leads to stationary distribution...
+- Extra things
+  - emphasize the incompleteness of the review. Maybe cite a few ``relevant'' Perc papers?
 
 %%
 the flow for the intro should be something like: maynard smith setup this false dichotomy: ESS is about ``individual'' level selection when really there are two issues, ESS as tool of optimality and then the application of that tool to kin/group models. this requires explaining how ESS is a tool of optimality and how a particular optimality measure, namely lineage growth rate, accounts for kin and group selection since it can captures selection at all levels from the gene on up. accounting for other evolutionary forces is more difficult but one way forward uses the fixation probability and allows mutation/demography etc to affect fixation probabilities and hence transition rates.
