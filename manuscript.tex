@@ -51,7 +51,7 @@
 \usepackage{titling}
 \usepackage{xparse}
 
-\usepackage[displaymath, mathlines]{lineno}
+\usepackage[mathlines]{lineno}
 \newcommand*\patchAmsMathEnvironmentForLineno[1]{%
   \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
   \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
@@ -154,7 +154,7 @@
 \pretitle{\begin{center}\LARGE}
 \posttitle{\par\end{center}\vskip 2.5em}
 
-\title{\scshape Evolutionary dynamics, equilibrium selection, and what population and quantitative genetics have taught evolutionary game theory}
+\title{\scshape Evolutionarily stable strategy analysis and its links to demography and genetics through invasion fitness}
 \author{Jeremy Van Cleve}
 \date{}
 \maketitle
@@ -178,16 +178,15 @@ e-mail: \href{mailto:jvancleve@uky.edu}{jvancleve@uky.edu}
 \onehalfspacing
 \begin{abstract}
 
-  The application of game theory to animal behavior by Maynard Smith and Price invigorated evolutionary biology by suggesting that the complex dynamics among natural selection, genes, and behavior could be analyzed using an evolutionary refinement of the Nash equilibrium, namely the evolutionarily stable strategy (ESS). As implied by ``equilibrium'' and ``stable'', an ESS is a predicted long-term outcome that an evolutionary process may reach via natural selection and mutation.
+  Evolutionarily stable strategy (ESS) analysis pioneered by Maynard Smith and Price took off in part because it often does not require explicit assumptions about the genetics and demography of a population in contrast to population genetic models. Though this simplicity is useful, it obscures the degree to which ESS analysis applies to in populations with more realistic genetics and demography: for example, how does ESS analysis handle interactions kin selection, group selection, and variable environments when phenotypes are affected by multiple genes?
 
-  In addition to its intuitiveness, ESS analysis makes modeling phenotypic evolution relatively simple as it often does not require the modeler to state their assumptions about the genetics and demography of a population in contrast to explicit population or quantitative genetic models. Though this simplicity is useful, it can obscure the degree to which ESS analysis is applicable in populations with more realistic genetic and demography: for example how does ESS analysis handle  interactions with relatives (kin selection), selection across levels (group selection), and variable environments when phenotypes are affected by multiple genes?
-
-  In this paper, I will review the history of the ESS concept and show how early uncertainty about the method lead to deeper theoretical work linking ESS analysis to very general population models through the theory of ``long-term evolution''. A crucial tool in long-term evolution is the concept of ``invasion fitness'', which can be calculated for populations with complex genetics and demography and can be used to predict ESSs. These ESSs often depend crucially on demographic and genetic parameters. Given the increasing abundance of genetic and long-term demographic data in natural populations, this means that ESS analysis will likely be an important tool in understanding these data with evolutionary models.
+  In this paper, I review the history of the ESS concept and show how early uncertainty about the method lead to important mathematical theory linking ESS analysis to general population-genetic models. I use this theory to emphasize the link between ESS analysis and the concept of ``invasion fitness''. I give examples of how invasion fitness can measure kin selection, group selection, and the evolution of linked modifier genes in response to variable environments. The ESSs in these examples depend crucially on demographic and genetic parameters, which highlights how ESS analysis will continue to be an important tool in understanding evolutionary patterns even as models must address the increasing abundance of genetic and long-term demographic data in natural populations.
 
 \end{abstract}
 
 \vspace{3em}
 \noindent {\bfseries Key words}\\
+ESS, lineage fitness, kin selection, group selection, inclusive fitness, reduction principle, variable environments
 
 \clearpage
 \section{Introduction}
@@ -355,12 +354,20 @@ We can see immediately that if mutant allele expression is costly to the individ
   \label{fig:pip:switching}
 \end{figure}
 
+One of the important features of Result \ref{res:twolocus} is that shows how under some genetic and demographic scenarios (i.e., a single randomly mating population in a constant environment) an ESS phenotype maybe independent of some genetic parameters like the recombination rate between the loci affecting the phenotype. Another example of this kind of result is the ``reduction principle'' of Feldman, Liberman, and colleagues \cite{Feldman:Liberman:1986,Liberman:Feldman:1986,Liberman:Feldman:1986a,Liberman:Feldman:1989,Altenberg:Liberman:2017}, which says that for large, randomly mating populations with viability selection in a constant environment, the only uninvadable or unbeatable rates of recombination, mutation, and migration are the lowest possible rates (typically zero). Like Result \ref{res:twolocus}, the reduction principle is proved by analyzing the external stability of an internally stable equilibrium and calculating the invasion fitness of a rare mutant allele. However, alleles at the genetic locus where external stability is tested, which is called the modifier locus, do not directly affect fitness and instead modify rates of recombination, mutation, or migration. Given the connection between invasion fitness and ESS analysis, the reduction principle shows that rates of zero recombination, mutation, or migration are strict ESSs. In effect, the reduction principle says natural selection on populations at equilibrium in constant environments acts to reduce genetic and demographic processes that increase genetic variation; this is intuitive as such genetic variation must results in lower fitness genotypes since the population is already at an equilibrium and the environment is constant. Like Result \ref{res:twolocus}, the reduction principle holds independent of the recombination rate between the modifier locus and major loci that affect fitness.
+
+In environments that are not constant, the reduction principle does not hold as genetic variation can be beneficial depending on the environmental state. Thus, natural selection may favor genetic and demographic mechanisms that generate genetic variation like positive rates of recombination, mutation, and migration. In fact, environmental variation, particularly over time, is one of the most well-studied and important factors supporting the evolution of genotypic and phenotypic variation and the evolution of the mechanisms that promote such variation like recombination \cite{Charlesworth:1976,Sasaki:Iwasa:1987,Otto:Michalakis:1998}, mutation \cite{Leigh:1970,Ishii:Matsuda:1989,Lachmann:Jablonka:1996}, migration \cite{Gillespie:1981,McPeek:Holt:1992,Blanquart:Gandon:2011}, and phenotypic plasticity \cite{Caswell:1983,Via:Lande:1985,Gavrilets:Scheiner:1993,Jong:1995} and bet-hedging \cite{Slatkin:1974,Seger:Brockmann:1987,Kussell:Leibler:2005,Salathe:VanCleve:2009}. Recent work shows that not only are the ES recombination, mutation, and migration evolve rates positive in variable environments, but they also depends on genetic parameters like the recombination rate between the major and modifier loci. In the case of mutation rate evolution, \citeauthor{Liberman:VanCleve:2011} \cite{Liberman:VanCleve:2011} use an analysis of the external stability of the mutation rate to show that the ES mutation rate depends on the recombination rate between phenotypic locus and the modifier locus. For example, Figure \ref{fig:pip:switching}, shows pairwise invasibility plots for switching rate with different recombination rates and given weakly asymmetric selection in two different environments that alternate every $T=50$ generations. White regions are where mutant alleles with a switching rate on the vertical axis can invade a population with a resident rate for the rest of the population given by the horizontal axis; black regions are when such a mutant cannot invade. The plots show that a rate of $~1/50$ is ES when the recombination rate is zero, similar to older results in \cite{Leigh:1970,Lachmann:Jablonka:1996} that show the ES rate is $~1/T$. The ES switching rate decreases as recombination increases until there is an abrupt shift to an ES rate of zero switching. \citeauthor{Carja:Liberman:2014} \cite{Carja:Liberman:2014} generalize this approach to the evolution of recombination, mutation, and migration in fluctuating environments. They first show that the rate of environmental fluctuation has the same effect on ES recombination and migration rates as it does on ES mutation rates, namely that slower rates of fluctuation lead to slower recombination, mutation, and migration rates. In other words, as the rate of environmental change slows, so do the ES rates of genetic and demographic processes that generate genetic variation. Ref. \cite{Carja:Liberman:2014} also shows that these ES rates all decrease with increasing rates of recombination between the major and modifier loci. This can be understood as due to the fact that the strength of indirect selection at the modifier locus decreases as increased recombination erodes linkage disequilibrium between the major and modifier loci.
+
+\section{Conclusions and the future of ESS analysis}
+
+When Maynard Smith and Price \cite{Maynard-Smith:Price:1973,Maynard-Smith:1974} introduced ESS analysis, the revolutions in molecular genetics and genomics where still two and three decades off, respectively, and evolutionary biology was being roiled by questions and debates regarding the role of natural selection in the evolution of phenotypic novelty broadly \cite{Gould:Lewontin:1979} and in the evolution of animal and human behavior specifically \cite{Lewontin:1977,Hamilton:1977}. These debates drew sharp lines between proponents of evolutionary theory derived from explicit genetic and demographic assumptions and theories of phenotypic change based on natural selection alone, namely fitness optimization and ESS analysis. Even among those who agreed that ESS analysis was an important approach, questions remained about what measure of fitness to optimize, individual or inclusive fitness, and how to incorporate multilevel selection. In the decades following Maynard Smith and Price \cite{Maynard-Smith:Price:1973} however, mathematical analysis bridged some of the division by showing how ESSs can be viewed as the evolutionary attractors of a long-term evolutionary process that also incorporates short-term evolutionary change due to natural selection, mutation, recombination, and other evolutionary forces. Mathematical analysis of the long-term process also revealed that invasion fitness as a measure of external stability is the appropriate way to measure evolutionary success and that it can incorporate kin and group selection effects in group structure populations.
 
 
-A more recent example involves the evolution of bet-hedging where organisms alternative between different phenotypes with a specific probability or rate when the environmental cycles between different conditions \cite{Seger:Brockmann:1987,Slatkin:1974}. These phenotypic shifts can be due to genetic mutations \cite{Leigh:1970,Ishii:Matsuda:1989} or switching between different epigenetic states  \cite{Kussell:Leibler:2005,Salathe:VanCleve:2009} where control of the mutation or switching rate is determined by a ``modifier'' locus separate for the genetic or epigenetic locus controlling the phenotype. Due to the the fitness effects of a changing environment, this scenario does not fit neatly into the conditions required for Result \ref{res:twolocus}. In fact, an analysis of the external stability of the switching/mutation rate shows that the switching rate that is ES depends on the recombination rate between phenotypic locus and the modifier locus \cite{Liberman:VanCleve:2011}. For example, Figure \ref{fig:pip:switching}, shows pairwise invasibility plots for switching rate with different recombination rates and given weakly asymmetric selection in two different environments that alternate every $50$ generations. White regions are where mutant alleles with a switching rate on the veritcal axis can invade a population with a resident rate for the rest of the population given by the horizontal axis; black regions are when such a mutant cannot invade. The plots show that a rate of $~1/50$ is ES when the recombination rate is zero (similar to older results in \cite{Leigh:1970,Lachmann:Jablonka:1996}). The ES switching rate decreases as recombination increases until there is an abrupt shift to an ES rate of zero switching. In addition to the ES sex ratio and switching rate, there are other examples where the genetic parameters of the modifier locus affect the ES value at that locus including dispersal and recombination in changing environments \cite{Carja:Liberman:2014}.
+\cite{Leimar:2009,Mullon:Keller:2016,Mullon:Keller:2018,Mullon:Lehmann:2019}
 
+\section{Acknowledgements}
 
-% \section{Acknowledgements}
+J.V.C. would like to acknowledge the hard work and extraordinary patience of the editors and staff who brought this special issue together.
 
 \section{Funding}
 
@@ -386,10 +393,6 @@ This work was supported by National Science Foundation awards \#1846260 and \#19
 - Extra things
   - emphasize the incompleteness of the review. Maybe cite a few ``relevant'' Perc papers?
 
-%%
-the flow for the intro should be something like: maynard smith setup this false dichotomy: ESS is about ``individual'' level selection when really there are two issues, ESS as tool of optimality and then the application of that tool to kin/group models. this requires explaining how ESS is a tool of optimality and how a particular optimality measure, namely lineage growth rate, accounts for kin and group selection since it can captures selection at all levels from the gene on up. accounting for other evolutionary forces is more difficult but one way forward uses the fixation probability and allows mutation/demography etc to affect fixation probabilities and hence transition rates.
-
-
 %%%
 %%% Detailed outline for post intro
 %%%
@@ -407,13 +410,3 @@ Genetic environments can include other loci linked by recombination. This is the
 Recognizing the importance of genetic parameters in ESS is the opposite of early work to justify ESS which tried to find conditions when ESS predicted same as pop gen but genetic parameters didn't appear.
 
 One way forward to understanding the complex phenotypic evolution including social evolution should involve using ESS theory that incorporates more genetics including multiple loci. This is notably complementary to methods that study trait coevolution, e.g., Mullon and Lehmann.
-
-%%%
-%%% Fleshed out outline material
-%%%
-
-maybe my argument is then (see below) that population genetic model that include many forces can be converted into long-term evolution models.
-
-So the idea should be something like ESS is really a mathematical formulation of the long-term evolution process which can include additional evolutionary forces other than natural selection.
-
-The argument here is that invasion fitness / lineage fitness and its finite population analogue, fixation probability, are really just measures of evolutionary success that can include any potential evolutionary force. The maxima of these measures then yield the stable fixed equilibria of a long-term evolutionary process in a deterministic model or the modes of probability density in a stochastic model. Can appeal to physical notions of mean-field (?), potential wells, large deviation theory. Also appeal to stochastic stability and equilibrium selection from game theory (which borrows from physics). ESS then represents attracting points in phenotypic space and is informative even in the non-zero mutation and finite population size cases.
