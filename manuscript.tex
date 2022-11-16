@@ -329,8 +329,8 @@ where, dropping the dependence on $\vec{x}$ and $\vec{y}$ for ease of presentati
 \begin{equation}
   \label{eq:wg:wdeltag}
   \begin{split}
-    \omega_{G,s's} & = \left(b_{s's \leftarrow s} - c_{s's} \right) \left(\frac{1}{n_{s}} + \frac{n_{s}-1}{n_{s}} r_{\sigma|s} \right) + \sum_{\sigma \ne s} b_{s's \leftarrow \sigma} r_{\sigma|s} \\
-    \omega_{\Delta G,s's} & = - \left(b_{s's \leftarrow s} + c_{s's}\right) \frac{n_{s}-1}{n_{s}} \left( 1 - r_{\sigma|s} \right) \: .
+    \omega_{G,s's} & = \left(b_{s's \leftarrow s} - c_{s's} \right) \left(\frac{1}{n_{s}} + \frac{n_{s}-1}{n_{s}} r_{s|s} \right) + \sum_{\sigma \ne s} b_{s's \leftarrow \sigma} r_{\sigma|s} \\
+    \omega_{\Delta G,s's} & = - \left(b_{s's \leftarrow s} + c_{s's}\right) \frac{n_{s}-1}{n_{s}} \left( 1 - r_{s|s} \right) \: .
   \end{split}
 \end{equation}
 We can see immediately that if mutant allele expression is costly to the individual itself, $c_{s's}>0$, helps others, $b_{s's \leftarrow \sigma}>0$ for all classes $\sigma$, and the benefits outweigh the costs within a class, $b_{s's \leftarrow s} - c_{s's}>0$, then the mutant allele expression is positively selected by between-group selection and negatively selected by within-group selection. Since both the kin selection and group selection partitions of invasion fitness (equations \eqref{eq:eig:IF} and \eqref{eq:eig:GS}, respectively) are expressed using the same benefit, cost, and relatedness functions, a single ESS analysis using invasion can answer questions derived both both perspectives.
