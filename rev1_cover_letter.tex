@@ -81,15 +81,40 @@ I've had added that the fitness $w(x,y)$ is a linear function of its arguments, 
   - Equation 3: $u_j$ is not yet defined I think? $u_{xy}$ has been defined as an entry of the pay off matrix, but this $u$ only comes with one index?
 \end{reviewerquote}
 
+Ah, apologies. The $u_{j}$ are elements of the eigenvector mentioned above equation 2 and I now spell that out more clearly. I have also changed notation for the payoff matrix to $W$ to make things clearer.
+
+\begin{reviewerquote}
+  - Line 212-213: “under the right assumptions”, and earlier in that paragraph “given the general genetic and demographic assumptions above”. I read through the above again to try and find what these assumptions are but had trouble locating them, except for maybe “the fitness function is linear” and “mutant allele is rare”? Can you repeat/list the assumptions necessary for Result 1 to hold?
+\end{reviewerquote}
+
+I have reworked those sentences and have added a list of the assumptions after Result 1 with some discussion of how they might be relaxed.
+
+\begin{reviewerquote}
+  - I guess $u_k(y,x)$ on line 305 is an element in the vector $u(y,x)$ from line 292?
+\end{reviewerquote}
+
+Yes, I now specify that in the text.
+
+\begin{reviewerquote}
+  - What are the dimensions of the matrix $A(y,x)$ in line 287? I’ve never encountered vectors used as matrix indices before (as in $a_{k’k}$, usually matrix indices are scalars), and I’m not sure how to interpret the notation? If $A$ contains all possible $k$ and $k’$ vectors, its dimensions must quickly get very large?
+\end{reviewerquote}
+
+Yes, the dimensions of the $\mathbf{A}$ matrix are all possible $\vec{k}$ and $\vec{k}$ vectors and the size quickly gets very. It may not be the most computationally efficient formalism but works well enough as a conceptual approach. The notation works by assuming that one creates an ordering for the possible states in $\vec{k}$ and then indexes the matrices and vectors by that ordering. I now specify this in the third paragraph of section 6.
+
+\begin{reviewerquote}
+  - Really enjoyed the section on variable environments.
+\end{reviewerquote}
+
+Excellent, I'm glad!
+
+\begin{reviewerquote}
+Minor comments:
+- Line 53: I’m not sure what it means for a method to be orthogonal to issues
+\end{reviewerquote}
+
 
 
 \begin{reviewerquote}
-- Line 212-213: “under the right assumptions”, and earlier in that paragraph “given the general genetic and demographic assumptions above”. I read through the above again to try and find what these assumptions are but had trouble locating them, except for maybe “the fitness function is linear” and “mutant allele is rare”? Can you repeat/list the assumptions necessary for Result 1 to hold?
-- I guess $u_k(y,x)$ on line 305 is an element in the vector $u(y,x)$ from line 292?
-- What are the dimensions of the matrix $A(y,x)$ in line 287? I’ve never encountered vectors used as matrix indices before (as in $a_{k’k}$, usually matrix indices are scalars), and I’m not sure how to interpret the notation? If $A$ contains all possible $k$ and $k’$ vectors, its dimensions must quickly get very large?
-- Really enjoyed the section on variable environments.
-Minor comments:
-- Line 53: I’m not sure what it means for a method to be orthogonal to issues
 Typos:
 - Line 87: exits -> exists
 - Line 97: in that in can in
