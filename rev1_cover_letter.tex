@@ -17,7 +17,7 @@
 \titleformat{\section}{\scshape \bfseries}{}{0ex}{#1}
 \titlespacing{\section}{0pt}{1.0ex plus 0.25ex minus 0.25ex}{0.5ex plus 0.1ex minus 0.1ex}
 
-\newenvironment{reviewerquote}{\begin{quote}\color{DarkBlue}\itshape}{\end{quote}}
+\newenvironment{reviewerquote}{\begin{quote}\color{DarkBlue}\bfseries}{\end{quote}}
 \newenvironment{response}{}{}
 
 \begin{document}
@@ -50,8 +50,8 @@ I would like to thank the Editor and Reviewers for their very detailed in insigh
 Thank you for the excellent feedback. I've endeavored to improve the latter parts of the paper and provide clearer explanations. Please see my responses below to the reviewer's specific comments.
 
 \begin{reviewerquote}
-Confusion/clarification/notational questions:
-- You are using $x$ and $y$ to denote both the phenotypes, and their frequencies, and I’m not always sure which one you mean. E.g. up until line 138, x and y have been defined as denoting the phenotypes, so I assume that $w(x,y)$ in line 127 means that $x$ and $y$ are interacting, and it does not mean that w is a function of the frequencies of $x$ and $y$? It would help me a lot if you used different symbols for these two things, e.g. maybe $p_x$ and $p_y$ for the frequencies?
+Confusion/clarification/notational questions:\\
+- You are using $x$ and $y$ to denote both the phenotypes, and their frequencies, and I’m not always sure which one you mean. E.g. up until line 138, x and y have been defined as denoting the phenotypes, so I assume that $w(x,y)$ in line 127 means that $x$ and $y$ are interacting, and it does not mean that w is a function of the frequencies of $x$ and $y$? It would help me a lot if you used different symbols for these two things, e.g. maybe $p_x$ and $p_y$ for the frequencies?\\
 - Line 135: So now we have x denoting both the phenotype and the frequency of the phenotype, and then we have $x_{ij}$ denoting mating preference of genotype $A_i$ $A_j$. Is it possible to use a different symbol for $x_{ij}$?
 \end{reviewerquote}
 
@@ -108,43 +108,105 @@ Yes, the dimensions of the $\mathbf{A}$ matrix are all possible $\vec{k}$ and $\
 Excellent, I'm glad!
 
 \begin{reviewerquote}
-Minor comments:
+Minor comments:\\
 - Line 53: I’m not sure what it means for a method to be orthogonal to issues
 \end{reviewerquote}
 
-
+Corrected.
 
 \begin{reviewerquote}
-Typos:
+Typos:\\
 - Line 87: exits -> exists
-- Line 97: in that in can in
-- Line 155 an genetic -> a genetic
+- Line 97: in that in can in\\
+- Line 155 an genetic -> a genetic\\
 - Line 347 “One of the important features of Result 1 is that shows how”
 \end{reviewerquote}
+
+Fixed.
 
 \section{Referee 2 comments}
 
 \begin{reviewerquote}
-
 This manuscript attempts to review the 50-year history of the ESS concept. In view of the more than 50,000 “ESS articles” published since 1973, this is a highly ambitious task. Although I agree with some of the take-home messages of the manuscript, I am not entirely convinced that Van Cleve has succeeded in his mission.
-
-From the start, the ESS history was multi-faceted. The 1973 paper of Maynard Smith and Price was based on an earlier manuscript of Price (which I could inspect when visiting Maynard Smith many years ago). Here, the main novel idea was not the ESS concept but rather “strategy thinking”, adopted from game theory (strategy = recipe for condition-dependent behaviour). Price argued that a “mouse” strategy (nowadays called Dove) could be rapidly outcompeted by a more aggressive strategy, but that this would not be the case for a ”retaliator” strategy, which, in the absence of aggressive individuals, leads to precisely the same behaviour as the “mouse” strategy. From this, Price drew the (for him) most important conclusion that the “organisation of behaviour” (that is, the “strategy” underlying behaviour) is crucial for understanding behavioural evolution. In contrast, Maynard Smith had one main goal: to publish his ESS concept before Hamilton could work out his ideas on “unbeatable strategies” in more detail.
-
-I mention all this because Von Cleve starts talking about evolutionary “game theory”, while game aspects (like strategy thinking) play a minor role in his review. He is not really interested in behavioural interactions, but in generalizing the ESS concept to more complicated settings. At first, I found this quite confusing, as, from the historical perspective, it is crucial that the ESS concept was first developed in a game context. In fact, Maynard Smith’s derivation of the ESS conditions (1a) and (1b) only makes sense for two-person matrix games, as in this case the fitness function w(x,y) is linear in both components. Various authors later “corrected” this “mistake” and derived more general ESS concepts for non-linear fitness functions. It is a pity that all this is not mentioned by Van Cleve. Indeed, non-linearities arise, for example, in “games between relatives”. How to deal with this (and, hence, how to capture kin selection in the ESS formalism) led to a vivid exchange of arguments between Grafen and Maynard Smith in the late 1970s and the early 1980s. Grafen pointed out that his approach (corresponding to an “actor-modulated approach”) leads to quite different outcomes than Maynard Smith’s inclusive fitness approach. As kin selection is a central theme of Van Cleve’s manuscript, I would have expected to hear about these early debates.
-
-Anyway, it is now quite obvious that Maynard Smith would have designed the ESS conditions quite differently if he had considered the possibility of a non-linear fitness function. It soon became clear that such functions can have quite different evolutionary properties, like “Garden of Eden” scenarios where an ESS is not attainable, or “evolutionary branching” scenarios where the population converges to an evolutionarily unstable strategy. Later work on this resulted in Adaptive Dynamics theory, which is not mentioned at all in Van Cleve’s manuscript, although the invasion fitness concept of Adaptive Dynamics is more sophisticated than the variant propagated by Van Cleve. Interestingly, from the Adaptive Dynamics perspective, the second ESS condition of Maynard Smith is not a condition for “evolutionary stability” at all, but rather a condition for “convergence stability”. This has been noticed before (in writing) by various colleagues, including Eshel, Lessard, Metz, and Dieckmann. It would have been very interesting to hear Van Cleve’s position regarding this reinterpretation of “ESS history”.
-
-The middle part of Van Cleve’s review (Sections 3 and 4) contains some interesting observations, but the results are often stated in a relatively sloppy manner (i.e., without mentioning the conditions under which they hold). In fact, the references referred to in the review all make quite limiting assumptions, such as a linear fitness function (in both components) or a system with only two phenotypes. Take, for example, the discussion of internal versus internal stability in Section 4, two very interesting concepts indeed. These concepts are mainly useful in systems with many different strategies. In contrast, the central Result 1 of that Section only applies to systems with two pure strategies (or phenotypes), and it does not hold anymore in three-strategy games like Rock-Scissors-Paper (this is, for example, explicitly mentioned in the key reference 103). Obviously, this limitation of Result 1 should have been mentioned. In fact, various counter-examples to both parts of Result 1 were constructed in the evolutionary branch of economic game theory (most notably by Friedman and Nachbar). Like my colleagues from economics, I also spent several years on attempts to extend Result 1 to more than two phenotypes. Like them, I had to conclude that long-term evolution does not “save” the ESS concept when more than two strategies are around.
-
-But also the case of only two phenotypes is less clear than presented by Van Cleve. A good example can be found in the excellent book of Karlin and Lessard on sex ratio evolution (which, historically, was very important for the idea of long-term evolution). Karlin and Lessard realized that genetic constraints often prevent the evolution of an “evolutionarily stable” sex ratio (sensu Maynard Smith). Around this time, they collaborated with Eshel, and together the three considered long-term evolution. Karlin and Lessard decided to conduct a long-term simulation study by once in a while adding new genetic variants, in order to remove genetic constraints. This study resulted, however, in deception, as it did not converge at all. Sometimes the trajectory converged to a state close to the ESS sex ratio, but consecutively, it always moved away again. Later, I found the same in my own simulations, both in the context of sex ratio evolution and in the context of two-strategy games. Accordingly, I am much less convinced than Van Cleve that “long-term evolution” has been shown to “save” the ESS concept.
-
-In contrast to the earlier sections, which are broadly accessible, Sections 6 and 7 are technically more sophisticated and will most likely only be understandable to experts. This holds, in particular, for Section 7. I wonder whether it is really useful to present Fig. 1 without discussing the underlying assumptions in sufficient depth and detail. The “reduction principle” is a wonderful tool but I would have liked to see a more critical discussion of its applicability.
-
-Generally, the manuscript is well-written. But as mentioned above, there is a certain imbalance in this manuscript: no (restrictive) assumptions are stated in the first sections (although the experts would have liked to see them spelt out explicitly), while the treatment in the later sections is only understandable to experts in the field.
-
 \end{reviewerquote}
 
+Thanks for the critical comments! I think indeed the task is a big one but I hope the revisions have improved the manuscript. The review certainly can't cover the whole history but I hope its captured a reasonable slice.
 
+\begin{reviewerquote}
+From the start, the ESS history was multi-faceted. The 1973 paper of Maynard Smith and Price was based on an earlier manuscript of Price (which I could inspect when visiting Maynard Smith many years ago). Here, the main novel idea was not the ESS concept but rather “strategy thinking”, adopted from game theory (strategy = recipe for condition-dependent behaviour). Price argued that a “mouse” strategy (nowadays called Dove) could be rapidly outcompeted by a more aggressive strategy, but that this would not be the case for a ”retaliator” strategy, which, in the absence of aggressive individuals, leads to precisely the same behaviour as the “mouse” strategy. From this, Price drew the (for him) most important conclusion that the “organisation of behaviour” (that is, the “strategy” underlying behaviour) is crucial for understanding behavioural evolution. In contrast, Maynard Smith had one main goal: to publish his ESS concept before Hamilton could work out his ideas on “unbeatable strategies” in more detail.
+
+I mention all this because Van Cleve starts talking about evolutionary “game theory”, while game aspects (like strategy thinking) play a minor role in his review. He is not really interested in behavioural interactions, but in generalizing the ESS concept to more complicated settings. At first, I found this quite confusing, as, from the historical perspective, it is crucial that the ESS concept was first developed in a game context. In fact, Maynard Smith’s derivation of the ESS conditions (1a) and (1b) only makes sense for two-person matrix games, as in this case the fitness function w(x,y) is linear in both components.
+\end{reviewerquote}
+
+There is some very interesting history here that I was not aware of. The reviewer has a unique perspective that I hope they write up soon!
+
+With respect to the two-person matrix game aspect, I now make the introduction of conditions (1a) and (1b) refer specifically to a pairwise game with to discrete strategies where the phenotype is the probability of selection among the discrete strategies (i.e., a a mixed strategy). I also introduce both the prisoner's dilemma and the snowdrift/hawk-dove game as examples to give the reader more context going into the more theoretical sections.
+
+I realize I don't focus on the ``strategy thinking'' aspect too much, though there is a little more of that aspect with the prisoner's dilemma and hawk-dove examples. I am writing from my background in population genetics where I learned about ESS as is related to general questions related to the dynamics of genetic and phenotypic evolution. As the reviewer says, there are many facets to the development of ESS, theory and I think this review is aiming for the evolutionary dynamic aspects and leaving the strategic thinking perspective to other efforts. I think this isn't an unprecedented perspective either. For example, Hofbauer and Sigmund in their 1998 book frame ESS in general around a population dynamic perspective.
+
+\begin{reviewerquote}
+  Various authors later “corrected” this “mistake” and derived more general ESS concepts for non-linear fitness functions. It is a pity that all this is not mentioned by Van Cleve...Anyway, it is now quite obvious that Maynard Smith would have designed the ESS conditions quite differently if he had considered the possibility of a non-linear fitness function. It soon became clear that such functions can have quite different evolutionary properties, like “Garden of Eden” scenarios where an ESS is not attainable, or “evolutionary branching” scenarios where the population converges to an evolutionarily unstable strategy. Later work on this resulted in Adaptive Dynamics theory, which is not mentioned at all in Van Cleve’s manuscript, although the invasion fitness concept of Adaptive Dynamics is more sophisticated than the variant propagated by Van Cleve. Interestingly, from the Adaptive Dynamics perspective, the second ESS condition of Maynard Smith is not a condition for “evolutionary stability” at all, but rather a condition for “convergence stability”. This has been noticed before (in writing) by various colleagues, including Eshel, Lessard, Metz, and Dieckmann. It would have been very interesting to hear Van Cleve’s position regarding this reinterpretation of “ESS history”.
+\end{reviewerquote}
+
+Yes, I have largely left out reviewing adaptive dynamics, which is not directly intentional per se but more because I wanted to build around the ESS condition in the original 1973 paper as the Phil Trans issue commemorates 50 years since that paper. However, adaptive dynamics is of course extremely important to evolutionary game theory and to the concept of invasion fitness. I've added XXX...
+%%% Add something about convergence stability to discussion.
+
+As to whether invasion fitness in adaptive dynamics is more general than what I discuss here, I would guess the reviewer is thinking of cases where short-term evolution reaches a non-equilibrium attractor like a cycle or chaotic attractor and invasion fitness must then really be measured in the sense of a Lyapunov exponent. I agree those cases are important but I do not mention them so as to keep the scope of the review from growing too much. It should be noted too that the assumptions and tools employed in typical deterministic and stochastic adaptive dynamics models ignore the non-equilibrium cases too as they are difficult to handle in general. One of those assumptions is often, as I discuss in reference to long-term evolution, infrequent mutation, which when combined with finite population size, leads to at most two genotypes existing at a time (see the Champagnat 2006 ref) and one of them either going extinct or fixing before the arrival of the next mutation.
+
+Finally, I totally agree that the second ESS condition from the 1973 paper is really the convergence stability condition. My review wasn't structured to synthesize the original ESS conditions with the stability and convergence conditions from adaptive dynamics but this would be the basis from a great review or synthesis article. %% Add something here maybe if I write convergence stability paragraph?
+
+\begin{reviewerquote}
+  Indeed, non-linearities arise, for example, in “games between relatives”. How to deal with this (and, hence, how to capture kin selection in the ESS formalism) led to a vivid exchange of arguments between Grafen and Maynard Smith in the late 1970s and the early 1980s. Grafen pointed out that his approach (corresponding to an “actor-modulated approach”) leads to quite different outcomes than Maynard Smith’s inclusive fitness approach. As kin selection is a central theme of Van Cleve’s manuscript, I would have expected to hear about these early debates.
+\end{reviewerquote}
+
+I think the reviewer may be referring to Maynard Smith (1978, Ann Rev Ecol Syst), Grafen (1979, Anim Behav), and Hines and Maynard Smith (1979, JTB).
+
+\begin{reviewerquote}
+  The middle part of Van Cleve’s review (Sections 3 and 4) contains some interesting observations, but the results are often stated in a relatively sloppy manner (i.e., without mentioning the conditions under which they hold).
+\end{reviewerquote}
+
+I agree that I need to be clearer about the conditions necessary the results in sections 3 and 4 to hold. I've now added a bulleted list at the end of section 4 that lists all of the conditions and also discuss how restrictive they may or may not be.
+
+\begin{reviewerquote}
+  In fact, the references referred to in the review all make quite limiting assumptions, such as a linear fitness function (in both components) or a system with only two phenotypes. Take, for example, the discussion of internal versus internal stability in Section 4, two very interesting concepts indeed. These concepts are mainly useful in systems with many different strategies. In contrast, the central Result 1 of that Section only applies to systems with two pure strategies (or phenotypes), and it does not hold anymore in three-strategy games like Rock-Scissors-Paper (this is, for example, explicitly mentioned in the key reference 103). Obviously, this limitation of Result 1 should have been mentioned.
+\end{reviewerquote}
+
+Yes, this limitation is important. I now specify it clearly as the first assumption in the bulleted list at the end of section 4.
+
+\begin{reviewerquote}
+  In fact, various counter-examples to both parts of Result 1 were constructed in the evolutionary branch of economic game theory (most notably by Friedman and Nachbar). Like my colleagues from economics, I also spent several years on attempts to extend Result 1 to more than two phenotypes. Like them, I had to conclude that long-term evolution does not “save” the ESS concept when more than two strategies are around.
+\end{reviewerquote}
+
+%% mention this more clearly at the end of section 4 and/or in the discussion
+
+
+\begin{reviewerquote}
+  But also the case of only two phenotypes is less clear than presented by Van Cleve. A good example can be found in the excellent book of Karlin and Lessard on sex ratio evolution (which, historically, was very important for the idea of long-term evolution). Karlin and Lessard realized that genetic constraints often prevent the evolution of an “evolutionarily stable” sex ratio (sensu Maynard Smith). Around this time, they collaborated with Eshel, and together the three considered long-term evolution. Karlin and Lessard decided to conduct a long-term simulation study by once in a while adding new genetic variants, in order to remove genetic constraints. This study resulted, however, in deception, as it did not converge at all. Sometimes the trajectory converged to a state close to the ESS sex ratio, but consecutively, it always moved away again. Later, I found the same in my own simulations, both in the context of sex ratio evolution and in the context of two-strategy games. Accordingly, I am much less convinced than Van Cleve that “long-term evolution” has been shown to “save” the ESS concept.
+\end{reviewerquote}
+
+%% ugh. ok take care of this
+
+\begin{reviewerquote}
+  In contrast to the earlier sections, which are broadly accessible, Sections 6 and 7 are technically more sophisticated and will most likely only be understandable to experts. This holds, in particular, for Section 7. I wonder whether it is really useful to present Fig. 1 without discussing the underlying assumptions in sufficient depth and detail.
+\end{reviewerquote}
+
+I agree that section 6 is more technical. I have added XXX..
+%% add here
+
+I have tried to keep Section 7 to a minimum of technical depth. I do not agree that its understandable to only technically sophisticated readers. However, it is relevant to add some of the assumptions for the modifier models discussed and I now do that in XXXX
+%% add here
+
+\begin{reviewerquote}
+  The “reduction principle” is a wonderful tool but I would have liked to see a more critical discussion of its applicability.
+\end{reviewerquote}
+
+I mention the reduction principle since it uses external stability to show the general evolutionary principle that selection in a constant generates purifying selection for the highest fitness genotype and against genetic variation created by other genotypes. Varying environments don't exhibit the reduction principle since genetic or phenotypic variation can be adaptive in these cases. I don't see how discussing technical criticisms of the reduction principle advances the purpose of the section, which is to show how the ESS concept as it relates to external stability can study the evolution of genetic and demographic parameters in the case of varying environments.
+
+\begin{reviewerquote}
+Generally, the manuscript is well-written. But as mentioned above, there is a certain imbalance in this manuscript: no (restrictive) assumptions are stated in the first sections (although the experts would have liked to see them spelt out explicitly), while the treatment in the later sections is only understandable to experts in the field.
+\end{reviewerquote}
+
+I hope I have addressed these criticisms as described above and hope these changes improves the manuscript!
 
 \end{letter}
 
