@@ -39,7 +39,7 @@
   While Reviewer 2 also finds the manuscript well written, they are more critical and make several comments which should be addressed and may require more extensive revision.
 \end{reviewerquote}
 
-I would like to thank the Editor and Reviewers for their very detailed in insightful comments. I have copied each Reviewer's comments below followed by a detailed response with changes I've made in response to the comments.
+I would like to thank the Editor and Reviewers for their very detailed in insightful comments. I have copied each Reviewer's comments below (in blue) followed by a detailed response with changes I've made in response to the comments.
 
 \section{Referee 1 comments}
 
@@ -55,7 +55,7 @@ Confusion/clarification/notational questions:\\
 - Line 135: So now we have x denoting both the phenotype and the frequency of the phenotype, and then we have $x_{ij}$ denoting mating preference of genotype $A_i$ $A_j$. Is it possible to use a different symbol for $x_{ij}$?
 \end{reviewerquote}
 
-Thanks for mentioning this. I did start the section talking about two strategies, $x$ and $y$, and thus do mean as suggested above that $w(x,y)$  is a function of phenotypic values $x$ and $y$ and not of frequencies of those strategies in the population. However, I think what may be causing confusion is that then I moved to allowing individuals to choose strategies $x$ and $y$ probabilistically, so now mixed strategies are allowed and the strategy is technically the probability of selecting strategy $x$ (with complementary probability of selecting strategy $y$). Since the probabilities $x_{ij}$ are strategies, I'd like to keep the same notation $x$ for the probabilities.
+Thanks for mentioning this. I did start the section talking about two strategies, $x$ and $y$, and thus do mean as suggested above that $w(x,y)$ is a function of phenotypic values $x$ and $y$ and not of frequencies of those strategies in the population. However, I think what may be causing confusion is that then I moved to allowing individuals to choose strategies $x$ and $y$ probabilistically, so now mixed strategies are allowed and the strategy is technically the probability of selecting strategy $x$ (with complementary probability of selecting strategy $y$). Since the probabilities $x_{ij}$ are strategies, I'd like to keep the same notation $x$ for the probabilities.
 
 However, a reworking of this section and some notation change I hope will make things simpler and clearer. I've started off assuming in section 2 that the strategies are probabilities of selecting behavior $C$ when individuals have two possible behaviors, $C$ and $D$. Now, the equation on line 138 (now eqn 2) is more clearly described as the mean strategy in the population or mean probability of selecting behavior $C$ and is no longer confusingly described as a frequency. I've added additional explanation in sections 2 and 3 to make the description of the phenotypes clearer.
 
@@ -75,7 +75,7 @@ The equation is correct as written and the confusion here stems from the earlier
   - Line 182: “the fitness function is linear”, linear in what/a linear function of what?
 \end{reviewerquote}
 
-I've had added that the fitness $w(x,y)$ is a linear function of its arguments, which are the phenotypes of the two interacting individuals. Linearity here is reasonable given the phenotype is a probability of selecting among two pure strategies.
+I've had added that the fitness $w(x,y)$ is a linear function of its arguments, which are the phenotypes of the two interacting individuals. Linearity here is reasonable given the phenotype is a probability of selecting among two pure strategies. I provide more discussion of this assumption in the new section 8.
 
 \begin{reviewerquote}
   - Equation 3: $u_j$ is not yet defined I think? $u_{xy}$ has been defined as an entry of the pay off matrix, but this $u$ only comes with one index?
@@ -87,7 +87,7 @@ Ah, apologies. The $u_{j}$ are elements of the eigenvector mentioned above equat
   - Line 212-213: “under the right assumptions”, and earlier in that paragraph “given the general genetic and demographic assumptions above”. I read through the above again to try and find what these assumptions are but had trouble locating them, except for maybe “the fitness function is linear” and “mutant allele is rare”? Can you repeat/list the assumptions necessary for Result 1 to hold?
 \end{reviewerquote}
 
-I have reworked those sentences and have added a list of the assumptions after Result 1 with some discussion of how they might be relaxed.
+I have reworked those sentences. I have also added a whole new section 8 that details all of the assumptions for Result 1 and discusses them in turn. See some of my additional responses below to Reviewer 2 for more detail.
 
 \begin{reviewerquote}
   - I guess $u_k(y,x)$ on line 305 is an element in the vector $u(y,x)$ from line 292?
@@ -148,59 +148,54 @@ I realize I don't focus on the ``strategy thinking'' aspect too much, though the
   Various authors later “corrected” this “mistake” and derived more general ESS concepts for non-linear fitness functions. It is a pity that all this is not mentioned by Van Cleve...Anyway, it is now quite obvious that Maynard Smith would have designed the ESS conditions quite differently if he had considered the possibility of a non-linear fitness function. It soon became clear that such functions can have quite different evolutionary properties, like “Garden of Eden” scenarios where an ESS is not attainable, or “evolutionary branching” scenarios where the population converges to an evolutionarily unstable strategy. Later work on this resulted in Adaptive Dynamics theory, which is not mentioned at all in Van Cleve’s manuscript, although the invasion fitness concept of Adaptive Dynamics is more sophisticated than the variant propagated by Van Cleve. Interestingly, from the Adaptive Dynamics perspective, the second ESS condition of Maynard Smith is not a condition for “evolutionary stability” at all, but rather a condition for “convergence stability”. This has been noticed before (in writing) by various colleagues, including Eshel, Lessard, Metz, and Dieckmann. It would have been very interesting to hear Van Cleve’s position regarding this reinterpretation of “ESS history”.
 \end{reviewerquote}
 
-Yes, I have largely left out reviewing adaptive dynamics, which is not directly intentional per se but more because I wanted to build around the ESS condition in the original 1973 paper as the Phil Trans issue commemorates 50 years since that paper. However, adaptive dynamics is of course extremely important to evolutionary game theory and to the concept of invasion fitness. I've added XXX...
-%%% Add something about convergence stability to discussion.
+Yes, I had largely left out reviewing adaptive dynamics, which is not directly intentional per se but more because I wanted to build around the ESS condition in the original 1973 paper as the Phil Trans issue commemorates 50 years since that paper. However, adaptive dynamics is of course extremely important to evolutionary game theory and to the concept of invasion fitness. I've have added a new section 9 with a short discussion of adaptive dynamics and evolutionary branching.
 
-As to whether invasion fitness in adaptive dynamics is more general than what I discuss here, I would guess the reviewer is thinking of cases where short-term evolution reaches a non-equilibrium attractor like a cycle or chaotic attractor and invasion fitness must then really be measured in the sense of a Lyapunov exponent. I agree those cases are important but I do not mention them so as to keep the scope of the review from growing too much. It should be noted too that the assumptions and tools employed in typical deterministic and stochastic adaptive dynamics models ignore the non-equilibrium cases too as they are difficult to handle in general. One of those assumptions is often, as I discuss in reference to long-term evolution, infrequent mutation, which when combined with finite population size, leads to at most two genotypes existing at a time (see the Champagnat 2006 ref) and one of them either going extinct or fixing before the arrival of the next mutation.
+As to whether invasion fitness in adaptive dynamics is more general than what I discuss here, I would guess the reviewer is thinking of cases where short-term evolution reaches a non-equilibrium attractor like a cycle or chaotic attractor and invasion fitness must then really be measured in the sense of a Lyapunov exponent. I agree those cases are important but I do not mention them to limit the length of the review. It should be noted too that the assumptions and tools employed in typical deterministic and stochastic adaptive dynamics models ignore the non-equilibrium cases too as they are difficult to handle in general. One of those assumptions is often, as I discuss in reference to long-term evolution, infrequent mutation, which when combined with finite population size, leads to at most two genotypes existing at a time (see the Champagnat 2006 ref) and one of them either going extinct or fixing before the arrival of the next mutation.
 
-Finally, I totally agree that the second ESS condition from the 1973 paper is really the convergence stability condition. My review wasn't structured to synthesize the original ESS conditions with the stability and convergence conditions from adaptive dynamics but this would be the basis from a great review or synthesis article. %% Add something here maybe if I write convergence stability paragraph?
+Finally, I totally agree that the second ESS condition from the 1973 paper is really the convergence stability condition. My review wasn't structured to synthesize the original ESS conditions with the stability and convergence conditions from adaptive dynamics but this would be the basis from a great review or synthesis article. However, I now briefly mention in section 9 how the second condition connects to convergence stability.
 
 \begin{reviewerquote}
   Indeed, non-linearities arise, for example, in “games between relatives”. How to deal with this (and, hence, how to capture kin selection in the ESS formalism) led to a vivid exchange of arguments between Grafen and Maynard Smith in the late 1970s and the early 1980s. Grafen pointed out that his approach (corresponding to an “actor-modulated approach”) leads to quite different outcomes than Maynard Smith’s inclusive fitness approach. As kin selection is a central theme of Van Cleve’s manuscript, I would have expected to hear about these early debates.
 \end{reviewerquote}
 
-I think the reviewer may be referring to Maynard Smith (1978, Ann Rev Ecol Syst), Grafen (1979, Anim Behav), and Hines and Maynard Smith (1979, JTB).
+I think the reviewer may be referring to Maynard Smith (1978, Ann Rev Ecol Syst), Grafen (1979, Anim Behav), and Hines and Maynard Smith (1979, JTB). While this history is interesting, I haven't added a discussion of those papers since there isn't room in this paper for a proper analysis of the relevant issues.
 
 \begin{reviewerquote}
   The middle part of Van Cleve’s review (Sections 3 and 4) contains some interesting observations, but the results are often stated in a relatively sloppy manner (i.e., without mentioning the conditions under which they hold).
 \end{reviewerquote}
 
-I agree that I need to be clearer about the conditions necessary the results in sections 3 and 4 to hold. I've now added a bulleted list at the end of section 4 that lists all of the conditions and also discuss how restrictive they may or may not be.
+I agree that I need to be clearer about the conditions necessary the results in sections 3 and 4 to hold. I've now added a new section 8 with a bulleted list that lists all of the conditions. The new section then discusses these assumptions in some detail.
 
 \begin{reviewerquote}
   In fact, the references referred to in the review all make quite limiting assumptions, such as a linear fitness function (in both components) or a system with only two phenotypes. Take, for example, the discussion of internal versus internal stability in Section 4, two very interesting concepts indeed. These concepts are mainly useful in systems with many different strategies. In contrast, the central Result 1 of that Section only applies to systems with two pure strategies (or phenotypes), and it does not hold anymore in three-strategy games like Rock-Scissors-Paper (this is, for example, explicitly mentioned in the key reference 103). Obviously, this limitation of Result 1 should have been mentioned.
 \end{reviewerquote}
 
-Yes, this limitation is important. I now specify it clearly as the first assumption in the bulleted list at the end of section 4.
+Yes, this limitation is important. I now specify it clearly as the first assumption in the bulleted list at in the new section 8. I also mention the rock paper scissors example.
 
 \begin{reviewerquote}
   In fact, various counter-examples to both parts of Result 1 were constructed in the evolutionary branch of economic game theory (most notably by Friedman and Nachbar). Like my colleagues from economics, I also spent several years on attempts to extend Result 1 to more than two phenotypes. Like them, I had to conclude that long-term evolution does not “save” the ESS concept when more than two strategies are around.
 \end{reviewerquote}
 
-%% mention this more clearly at the end of section 4 and/or in the discussion
-
+I now cite Friedman in addition to the rock paper scissors model as examples where ESS may not imply stability.
 
 \begin{reviewerquote}
   But also the case of only two phenotypes is less clear than presented by Van Cleve. A good example can be found in the excellent book of Karlin and Lessard on sex ratio evolution (which, historically, was very important for the idea of long-term evolution). Karlin and Lessard realized that genetic constraints often prevent the evolution of an “evolutionarily stable” sex ratio (sensu Maynard Smith). Around this time, they collaborated with Eshel, and together the three considered long-term evolution. Karlin and Lessard decided to conduct a long-term simulation study by once in a while adding new genetic variants, in order to remove genetic constraints. This study resulted, however, in deception, as it did not converge at all. Sometimes the trajectory converged to a state close to the ESS sex ratio, but consecutively, it always moved away again. Later, I found the same in my own simulations, both in the context of sex ratio evolution and in the context of two-strategy games. Accordingly, I am much less convinced than Van Cleve that “long-term evolution” has been shown to “save” the ESS concept.
 \end{reviewerquote}
 
-%% ugh. ok take care of this
+This is very interesting and I would like to learn more but I could not locate where in the Karlin and Lessard book they clearly described these simulations and the reviewer does not note whether they have published their own simulations. Based on what I think is a general lack of published clear simulation tests of long-term evolution, I think that what the reviewer is describing is a fruitful area for future research that isn't mature enough for me to cover here.
 
 \begin{reviewerquote}
   In contrast to the earlier sections, which are broadly accessible, Sections 6 and 7 are technically more sophisticated and will most likely only be understandable to experts. This holds, in particular, for Section 7. I wonder whether it is really useful to present Fig. 1 without discussing the underlying assumptions in sufficient depth and detail.
 \end{reviewerquote}
 
-I agree that section 6 is more technical. I have added XXX..
-%% add here
-
-I have tried to keep Section 7 to a minimum of technical depth. I do not agree that its understandable to only technically sophisticated readers. However, it is relevant to add some of the assumptions for the modifier models discussed and I now do that in XXXX
+I agree that section 6 is more technical. Nevertheless, I hope that it still gives the reader a sense for how invasion fitness can be used in these situations. On the other hand, I have tried to keep Section 7 to a minimum of technical depth. I do not agree that its understandable to only technically sophisticated readers. With respect to the assumptions that of the modifier models, they share a number in common with the broader long-term evolution approach and those assumptions are now discussed in detail in section 8.
 %% add here
 
 \begin{reviewerquote}
   The “reduction principle” is a wonderful tool but I would have liked to see a more critical discussion of its applicability.
 \end{reviewerquote}
 
-I mention the reduction principle since it uses external stability to show the general evolutionary principle that selection in a constant generates purifying selection for the highest fitness genotype and against genetic variation created by other genotypes. Varying environments don't exhibit the reduction principle since genetic or phenotypic variation can be adaptive in these cases. I don't see how discussing technical criticisms of the reduction principle advances the purpose of the section, which is to show how the ESS concept as it relates to external stability can study the evolution of genetic and demographic parameters in the case of varying environments.
+I mention the reduction principle since it uses external stability to show the general evolutionary principle that selection in a constant environment generates purifying selection for the highest fitness genotype and against genetic variation created by other genotypes. Varying environments don't exhibit the reduction principle since genetic or phenotypic variation can be adaptive in these cases. I don't see how discussing technical criticisms of the reduction principle advances the purpose of the section, which is to show how the ESS concept as it relates to external stability can study the evolution of genetic and demographic parameters in the case of varying environments.
 
 \begin{reviewerquote}
 Generally, the manuscript is well-written. But as mentioned above, there is a certain imbalance in this manuscript: no (restrictive) assumptions are stated in the first sections (although the experts would have liked to see them spelt out explicitly), while the treatment in the later sections is only understandable to experts in the field.
